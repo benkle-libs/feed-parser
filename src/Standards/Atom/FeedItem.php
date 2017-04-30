@@ -19,7 +19,7 @@
 namespace Benkle\FeedParser\Standards\Atom;
 
 
-use Benkle\FeedParser\Interfaces\ItemInterface;
+use Benkle\FeedInterfaces\ItemInterface;
 use Benkle\FeedParser\Traits\WithDescriptionTrait;
 use Benkle\FeedParser\Traits\WithEnclosuresTrait;
 use Benkle\FeedParser\Traits\WithLastModifiedTrait;

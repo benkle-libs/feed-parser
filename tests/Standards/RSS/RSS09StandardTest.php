@@ -19,7 +19,7 @@
 namespace Benkle\FeedParser\Standards\RSS;
 
 
-use Benkle\FeedParser\Interfaces\FeedInterface;
+use Benkle\FeedInterfaces\FeedInterface;
 use Benkle\FeedParser\Interfaces\StandardInterface;
 use Benkle\FeedParser\Parser;
 use Benkle\FeedParser\Utilities\PriorityList;

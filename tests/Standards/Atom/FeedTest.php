@@ -19,8 +19,10 @@
 namespace Benkle\FeedParser\Standards\Atom;
 
 
-use Benkle\FeedParser\Interfaces\FeedInterface;
-use Benkle\FeedParser\Interfaces\ItemInterface;
+
+use Benkle\FeedInterfaces\Exceptions\RelationNotFoundException;
+use Benkle\FeedInterfaces\FeedInterface;
+use Benkle\FeedInterfaces\ItemInterface;
 
 class FeedTest extends \PHPUnit_Framework_TestCase
 {
@@ -190,7 +192,7 @@ class FeedTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \Benkle\FeedParser\Exceptions\RelationNotFoundException
+     * @expectedException \Benkle\FeedInterfaces\Exceptions\RelationNotFoundException
      * @expectedExceptionMessage Relation "test" not found
      */
     public function testWithRelationsException()

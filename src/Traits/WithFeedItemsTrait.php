@@ -19,7 +19,8 @@
 namespace Benkle\FeedParser\Traits;
 
 
-use Benkle\FeedParser\Interfaces\ItemInterface;
+
+use Benkle\FeedInterfaces\ItemInterface;
 
 trait WithFeedItemsTrait
 {

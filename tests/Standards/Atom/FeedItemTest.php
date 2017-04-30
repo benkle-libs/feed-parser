@@ -19,7 +19,8 @@
 namespace Benkle\FeedParser\Standards\Atom;
 
 
-use Benkle\FeedParser\Interfaces\ItemInterface;
+
+use Benkle\FeedInterfaces\ItemInterface;
 
 class FeedItemTest extends \PHPUnit_Framework_TestCase
 {

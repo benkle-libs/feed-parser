@@ -19,8 +19,8 @@
 namespace Benkle\FeedParser\Standards\RSS\Rules;
 
 
-use Benkle\FeedParser\Interfaces\ItemInterface;
-use Benkle\FeedParser\Interfaces\NodeInterface;
+use Benkle\FeedInterfaces\ItemInterface;
+use Benkle\FeedInterfaces\NodeInterface;
 use Benkle\FeedParser\Interfaces\RuleInterface;
 use Benkle\FeedParser\Parser;
 

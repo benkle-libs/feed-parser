@@ -4,8 +4,41 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "0e9eeed464556d765ab78103c6690271",
+    "content-hash": "935a9a2abab70cd4f0f85e0a757aac11",
     "packages": [
+        {
+            "name": "benkle/feed-interfaces",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/benkle-libs/feed-interfaces.git",
+                "reference": "b182ad315afc66966cd9e40172d0d573a41f20a1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/benkle-libs/feed-interfaces/zipball/b182ad315afc66966cd9e40172d0d573a41f20a1",
+                "reference": "b182ad315afc66966cd9e40172d0d573a41f20a1",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Benkle\\FeedInterfaces\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Benjamin Kleiner",
+                    "email": "bizzl@users.sourceforge.net"
+                }
+            ],
+            "description": "Interfaces and exceptions shared between my feed handling packages",
+            "time": "2017-04-30T15:42:36+00:00"
+        },
         {
             "name": "guzzlehttp/guzzle",
             "version": "6.2.3",

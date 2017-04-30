@@ -19,7 +19,7 @@
 namespace Benkle\FeedParser\Standards\Atom\Rules;
 
 
-use Benkle\FeedParser\Interfaces\NodeInterface;
+use Benkle\FeedInterfaces\NodeInterface;
 use Benkle\FeedParser\Interfaces\RuleInterface;
 use Benkle\FeedParser\Parser;
 use Benkle\FeedParser\Standards\Atom\Atom10Standard;

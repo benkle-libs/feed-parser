@@ -19,9 +19,9 @@
 namespace Benkle\FeedParser\Standards\RSS;
 
 
+use Benkle\FeedInterfaces\FeedInterface;
 use Benkle\FeedParser\Exceptions\InvalidNumberOfRootTagsException;
 use Benkle\FeedParser\Feed;
-use Benkle\FeedParser\Interfaces\FeedInterface;
 use Benkle\FeedParser\Interfaces\StandardInterface;
 use Benkle\FeedParser\Standards\Atom\Rules\RelationsLinkRule;
 use Benkle\FeedParser\Standards\RSS\Rules\ChannelRule;

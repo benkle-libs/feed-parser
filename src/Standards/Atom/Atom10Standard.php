@@ -19,8 +19,8 @@
 namespace Benkle\FeedParser\Standards\Atom;
 
 
+use Benkle\FeedInterfaces\FeedInterface;
 use Benkle\FeedParser\Exceptions\InvalidNumberOfRootTagsException;
-use Benkle\FeedParser\Interfaces\FeedInterface;
 use Benkle\FeedParser\Interfaces\StandardInterface;
 use Benkle\FeedParser\Standards\Atom\Rules\EnclosureLinkRule;
 use Benkle\FeedParser\Standards\Atom\Rules\EntryRule;

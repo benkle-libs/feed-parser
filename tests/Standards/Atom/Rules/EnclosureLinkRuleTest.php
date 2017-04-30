@@ -19,9 +19,8 @@
 namespace Benkle\FeedParser\Standards\Atom\Rules;
 
 
-use Benkle\FeedParser\Interfaces\ChannelInterface;
-use Benkle\FeedParser\Interfaces\FeedInterface;
-use Benkle\FeedParser\Interfaces\ItemInterface;
+use Benkle\FeedInterfaces\ChannelInterface;
+use Benkle\FeedInterfaces\ItemInterface;
 use Benkle\FeedParser\Interfaces\RuleInterface;
 use Benkle\FeedParser\Parser;
 use Benkle\FeedParser\Standards\Atom\Atom10Standard;

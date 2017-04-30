@@ -19,7 +19,7 @@
 namespace Benkle\FeedParser;
 
 
-use Benkle\FeedParser\Interfaces\EnclosureInterface;
+use Benkle\FeedInterfaces\EnclosureInterface;
 use Benkle\FeedParser\Traits\WithLengthTrait;
 use Benkle\FeedParser\Traits\WithTitleTrait;
 use Benkle\FeedParser\Traits\WithTypeTrait;

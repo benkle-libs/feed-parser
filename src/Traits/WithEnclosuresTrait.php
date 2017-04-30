@@ -19,7 +19,8 @@
 namespace Benkle\FeedParser\Traits;
 
 
-use Benkle\FeedParser\Interfaces\EnclosureInterface;
+
+use Benkle\FeedInterfaces\EnclosureInterface;
 
 trait WithEnclosuresTrait
 {

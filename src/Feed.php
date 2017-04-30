@@ -19,7 +19,7 @@
 namespace Benkle\FeedParser;
 
 
-use Benkle\FeedParser\Interfaces\FeedInterface;
+use Benkle\FeedInterfaces\FeedInterface;
 use Benkle\FeedParser\Traits\WithDescriptionTrait;
 use Benkle\FeedParser\Traits\WithFeedItemsTrait;
 use Benkle\FeedParser\Traits\WithLastModifiedTrait;

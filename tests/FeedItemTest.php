@@ -19,8 +19,9 @@
 namespace Benkle\FeedParser;
 
 
-use Benkle\FeedParser\Interfaces\EnclosureInterface;
-use Benkle\FeedParser\Interfaces\ItemInterface;
+
+use Benkle\FeedInterfaces\EnclosureInterface;
+use Benkle\FeedInterfaces\ItemInterface;
 
 class FeedItemTest extends \PHPUnit_Framework_TestCase
 {

@@ -19,7 +19,8 @@
 namespace Benkle\FeedParser\Traits;
 
 
-use Benkle\FeedParser\Exceptions\RelationNotFoundException;
+
+use Benkle\FeedInterfaces\Exceptions\RelationNotFoundException;
 
 trait WithRelationsTrait
 {

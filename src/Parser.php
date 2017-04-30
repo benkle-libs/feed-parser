@@ -19,9 +19,9 @@
 namespace Benkle\FeedParser;
 
 
+use Benkle\FeedInterfaces\FeedInterface;
+use Benkle\FeedInterfaces\NodeInterface;
 use Benkle\FeedParser\Exceptions\InvalidNumberOfRootTagsException;
-use Benkle\FeedParser\Interfaces\FeedInterface;
-use Benkle\FeedParser\Interfaces\NodeInterface;
 use Benkle\FeedParser\Interfaces\RuleInterface;
 use Benkle\FeedParser\Interfaces\StandardInterface;
 

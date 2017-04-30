@@ -18,6 +18,7 @@
 
 namespace Benkle\FeedParser\Interfaces;
 
+use Benkle\FeedInterfaces\NodeInterface;
 use Benkle\FeedParser\Parser;
 
 interface RuleInterface
