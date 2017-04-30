@@ -10,7 +10,6 @@ Requirements
 ------------
 
  * PHP 5.6+
- * [guzzlehttp/guzzle](https://packagist.org/packages/guzzlehttp/guzzle) 6.2+
  * [masterminds/html5](https://packagist.org/packages/masterminds/html5) 2.2+
  * [psr/log](https://packagist.org/packages/psr/log) 1.0+
 
@@ -30,15 +29,13 @@ For a quick start you can instantiate the class `\Benkle\FeedParser\Reader` and 
 
 ```php
 $reader = new \Benkle\FeedParser\Reader();
-$feed = $reader->read('http://xkcd.com/atom.xml');
+$feed = $reader->read(file_get_contents('http://xkcd.com/atom.xml'));
 
 echo $feed->getTitle() . PHP_EOL;
 foreach ($feed->getItems() as $item) {
     echo "\t" . $item->getTitle() . PHP_EOL;
 }
 ```
-
-The `Reader::read` can take urls, file pathes or the direct feed source, and will select one of the preexisting feed standards to parse the data into objects.
 
 ### Create your own rules
 
@@ -140,31 +137,6 @@ $reader->setDomParser(
 
 __Note:__ This Wrapper implements `Psr\Log\LoggerAwareInterface` and will write notices whenever any of it's protegé throws an exception!
 
-### Set your own file access
-
-If you need your own access (e.g. because you want to use [flysystem](http://flysystem.thephpleague.com/)) you have to write a wrapper as well, this time implementing `\Benkle\FeedParser\Interfaces\FileAccessInterface`:
-
-```php
-$reader->setFileAccess(new class implements \Benkle\FeedParser\Interfaces\FileAccessInterface {
-    private $myFs;
-
-    public function __construct()
-    {
-        $this->myFs = new MyFs();
-    }
-
-    public function exists($filename)
-    {
-        return $this->myFs->exists($filename);
-    }
-
-    public function get($filename)
-    {
-        return $this->myFs->open($filename);
-    }
-});
-```
-
 ### More control
 
 If you need more control over what standards are loaded, and don't need file and http access, you can use the `\Benkle\FeedParser\BareReader` class:
@@ -179,4 +151,3 @@ TODO
 ----
 
  * Moved included class `PriorityList` to a utility package.
- * Put Guzzle behind a facade similar to the `FileAccessInterface`?
