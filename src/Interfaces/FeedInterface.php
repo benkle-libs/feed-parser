@@ -16,12 +16,12 @@
  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-namespace Benkle\Feeding\Interfaces;
+namespace Benkle\FeedParser\Interfaces;
 
 /**
  * Interface FeedInterface
  * This interface represents a feed.
- * @package Benkle\Feeding\Interfaces
+ * @package Benkle\FeedParser\Interfaces
  */
 interface FeedInterface extends ChannelInterface
 {

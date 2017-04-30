@@ -16,20 +16,20 @@
  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-namespace Benkle\Feeding\Standards\Atom\Rules;
+namespace Benkle\FeedParser\Standards\Atom\Rules;
 
 
-use Benkle\Feeding\Standards\Atom\FeedItem;
-use Benkle\Feeding\Interfaces\FeedInterface;
-use Benkle\Feeding\Interfaces\NodeInterface;
-use Benkle\Feeding\Interfaces\RuleInterface;
-use Benkle\Feeding\Parser;
-use Benkle\Feeding\Standards\Atom\Atom10Standard;
+use Benkle\FeedParser\Standards\Atom\FeedItem;
+use Benkle\FeedParser\Interfaces\FeedInterface;
+use Benkle\FeedParser\Interfaces\NodeInterface;
+use Benkle\FeedParser\Interfaces\RuleInterface;
+use Benkle\FeedParser\Parser;
+use Benkle\FeedParser\Standards\Atom\Atom10Standard;
 
 /**
  * Class EntryRule
  * Parse an Atom entry.
- * @package Benkle\Feeding\Standards\Atom\Rules
+ * @package Benkle\FeedParser\Standards\Atom\Rules
  */
 class EntryRule implements RuleInterface
 {

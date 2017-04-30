@@ -16,12 +16,12 @@
  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-namespace Benkle\Feeding\Interfaces;
+namespace Benkle\FeedParser\Interfaces;
 
 /**
  * Interface EnclosureInterface
  * This interface represents an enclosure (you know, for podcasts...)
- * @package Benkle\Feeding\Interfaces
+ * @package Benkle\FeedParser\Interfaces
  */
 interface EnclosureInterface extends NodeInterface
 {

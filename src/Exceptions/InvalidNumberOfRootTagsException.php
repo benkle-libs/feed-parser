@@ -16,12 +16,12 @@
  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-namespace Benkle\Feeding\Exceptions;
+namespace Benkle\FeedParser\Exceptions;
 
 /**
  * Class InvalidNumberOfRootTagsException
  * Gets thrown when the number of root tags in a feed is of.
- * @package Benkle\Feeding\Exceptions
+ * @package Benkle\FeedParser\Exceptions
  */
 class InvalidNumberOfRootTagsException extends Exception
 {

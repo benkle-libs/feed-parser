@@ -16,16 +16,16 @@
  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-namespace Benkle\Feeding\DOMParsers;
+namespace Benkle\FeedParser\DOMParsers;
 
 
-use Benkle\Feeding\Interfaces\DOMParserInterface;
+use Benkle\FeedParser\Interfaces\DOMParserInterface;
 use Masterminds\HTML5;
 
 /**
  * Class MastermindsHTML5Parser
  * Adapter for the PHP-HTML5 parser.
- * @package Benkle\Feeding\DOMParsers
+ * @package Benkle\FeedParser\DOMParsers
  */
 class MastermindsHTML5Parser implements DOMParserInterface
 {

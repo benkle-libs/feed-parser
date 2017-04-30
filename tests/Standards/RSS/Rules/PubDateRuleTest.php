@@ -16,13 +16,13 @@
  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-namespace Benkle\Feeding\Standards\RSS\Rules;
+namespace Benkle\FeedParser\Standards\RSS\Rules;
 
 
-use Benkle\Feeding\Interfaces\FeedInterface;
-use Benkle\Feeding\Interfaces\ItemInterface;
-use Benkle\Feeding\Interfaces\RuleInterface;
-use Benkle\Feeding\Parser;
+use Benkle\FeedParser\Interfaces\FeedInterface;
+use Benkle\FeedParser\Interfaces\ItemInterface;
+use Benkle\FeedParser\Interfaces\RuleInterface;
+use Benkle\FeedParser\Parser;
 
 class PubDateRuleTest extends \PHPUnit_Framework_TestCase
 {
@@ -37,8 +37,8 @@ class PubDateRuleTest extends \PHPUnit_Framework_TestCase
     {
         $rule = new PubDateRule();
         $dom = new \DOMDocument();
-        $feed = $this->getMock(FeedInterface::class);
-        $item = $this->getMock(ItemInterface::class);
+        $feed = $this->createMock(FeedInterface::class);
+        $item = $this->createMock(ItemInterface::class);
 
         $domNode = $dom->createElement('pubdate');
         $this->assertEquals(false, $rule->canHandle($domNode, $feed));
@@ -58,13 +58,13 @@ class PubDateRuleTest extends \PHPUnit_Framework_TestCase
         $rule = new PubDateRule();
         $dom = new \DOMDocument();
         $domNode = $dom->createElement('pubdate');
-        $feed = $this->getMock(FeedInterface::class);
+        $feed = $this->createMock(FeedInterface::class);
         $domNode->nodeValue = 'Mon, 15 Aug 2005 15:52:01 +0000';
         $parser = $this
             ->getMockBuilder(Parser::class)
             ->disableOriginalConstructor()
             ->getMock();
-        $channel = $this->getMock(ItemInterface::class);
+        $channel = $this->createMock(ItemInterface::class);
         $channel
             ->expects($this->atLeast(1))
             ->method('setLastModified')

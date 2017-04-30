@@ -16,19 +16,19 @@
  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-namespace Benkle\Feeding;
+namespace Benkle\FeedParser;
 
 
-use Benkle\Feeding\Exceptions\InvalidNumberOfRootTagsException;
-use Benkle\Feeding\Interfaces\FeedInterface;
-use Benkle\Feeding\Interfaces\NodeInterface;
-use Benkle\Feeding\Interfaces\RuleInterface;
-use Benkle\Feeding\Interfaces\StandardInterface;
+use Benkle\FeedParser\Exceptions\InvalidNumberOfRootTagsException;
+use Benkle\FeedParser\Interfaces\FeedInterface;
+use Benkle\FeedParser\Interfaces\NodeInterface;
+use Benkle\FeedParser\Interfaces\RuleInterface;
+use Benkle\FeedParser\Interfaces\StandardInterface;
 
 /**
  * Class Parser
  * Our basic "parser". It walks over the dom document and applies the rules of a standards ruleset to the nodes.
- * @package Benkle\Feeding
+ * @package Benkle\FeedParser
  */
 class Parser
 {

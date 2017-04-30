@@ -1,5 +1,5 @@
 {
-  "name": "benkle/feeding",
+  "name": "benkle/feed-parser",
   "description": "Rule-based RSS and Atom parser",
   "minimum-stability": "stable",
   "license": "MIT",
@@ -13,7 +13,7 @@
   ],
   "autoload": {
     "psr-4": {
-      "Benkle\\Feeding\\": "src"
+      "Benkle\\FeedParser\\": "src"
     }
   },
   "require": {

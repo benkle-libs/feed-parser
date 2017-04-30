@@ -16,7 +16,7 @@
  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-namespace Benkle\Feeding\Utilities;
+namespace Benkle\FeedParser\Utilities;
 
 
 class PriorityListTest extends \PHPUnit_Framework_TestCase
@@ -204,8 +204,8 @@ class PriorityListTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \Benkle\Feeding\Exceptions\InvalidObjectClassException
-     * @expectedExceptionMessage List was limited to "stdClass", but was given a "Benkle\Feeding\Utilities\PriorityList"
+     * @expectedException \Benkle\FeedParser\Exceptions\InvalidObjectClassException
+     * @expectedExceptionMessage List was limited to "stdClass", but was given a "Benkle\FeedParser\Utilities\PriorityList"
      */
     public function testObjectSafety()
     {

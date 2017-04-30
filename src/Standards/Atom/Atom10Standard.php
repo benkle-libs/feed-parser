@@ -16,24 +16,24 @@
  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-namespace Benkle\Feeding\Standards\Atom;
+namespace Benkle\FeedParser\Standards\Atom;
 
 
-use Benkle\Feeding\Exceptions\InvalidNumberOfRootTagsException;
-use Benkle\Feeding\Interfaces\FeedInterface;
-use Benkle\Feeding\Interfaces\StandardInterface;
-use Benkle\Feeding\Standards\Atom\Rules\EnclosureLinkRule;
-use Benkle\Feeding\Standards\Atom\Rules\EntryRule;
-use Benkle\Feeding\Standards\Atom\Rules\RelationsLinkRule;
-use Benkle\Feeding\Standards\Atom\Rules\SimpleAtomFieldRule;
-use Benkle\Feeding\Standards\Atom\Rules\UpdatedRule;
-use Benkle\Feeding\Traits\WithParserTrait;
-use Benkle\Feeding\Traits\WithRuleSetTrait;
+use Benkle\FeedParser\Exceptions\InvalidNumberOfRootTagsException;
+use Benkle\FeedParser\Interfaces\FeedInterface;
+use Benkle\FeedParser\Interfaces\StandardInterface;
+use Benkle\FeedParser\Standards\Atom\Rules\EnclosureLinkRule;
+use Benkle\FeedParser\Standards\Atom\Rules\EntryRule;
+use Benkle\FeedParser\Standards\Atom\Rules\RelationsLinkRule;
+use Benkle\FeedParser\Standards\Atom\Rules\SimpleAtomFieldRule;
+use Benkle\FeedParser\Standards\Atom\Rules\UpdatedRule;
+use Benkle\FeedParser\Traits\WithParserTrait;
+use Benkle\FeedParser\Traits\WithRuleSetTrait;
 
 /**
  * Class Atom10Standard
  * Standard for handling Atom 1.0
- * @package Benkle\Feeding\Standards\Atom
+ * @package Benkle\FeedParser\Standards\Atom
  */
 class Atom10Standard implements StandardInterface
 {

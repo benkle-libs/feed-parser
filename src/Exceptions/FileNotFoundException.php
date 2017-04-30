@@ -16,12 +16,12 @@
  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-namespace Benkle\Feeding\Exceptions;
+namespace Benkle\FeedParser\Exceptions;
 
 /**
  * Class FileNotFoundException
  * Gets thrown when a file was not found.
- * @package Benkle\Feeding\Exceptions
+ * @package Benkle\FeedParser\Exceptions
  */
 class FileNotFoundException extends Exception
 {

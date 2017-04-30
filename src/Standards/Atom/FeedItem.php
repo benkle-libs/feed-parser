@@ -16,21 +16,21 @@
  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-namespace Benkle\Feeding\Standards\Atom;
+namespace Benkle\FeedParser\Standards\Atom;
 
 
-use Benkle\Feeding\Interfaces\ItemInterface;
-use Benkle\Feeding\Traits\WithDescriptionTrait;
-use Benkle\Feeding\Traits\WithEnclosuresTrait;
-use Benkle\Feeding\Traits\WithLastModifiedTrait;
-use Benkle\Feeding\Traits\WithPublicIdTrait;
-use Benkle\Feeding\Traits\WithRelationsTrait;
-use Benkle\Feeding\Traits\WithTitleTrait;
+use Benkle\FeedParser\Interfaces\ItemInterface;
+use Benkle\FeedParser\Traits\WithDescriptionTrait;
+use Benkle\FeedParser\Traits\WithEnclosuresTrait;
+use Benkle\FeedParser\Traits\WithLastModifiedTrait;
+use Benkle\FeedParser\Traits\WithPublicIdTrait;
+use Benkle\FeedParser\Traits\WithRelationsTrait;
+use Benkle\FeedParser\Traits\WithTitleTrait;
 
 /**
  * Class FeedItem
  * This class contains special mapping for Link.
- * @package Benkle\Feeding\Standards\Atom
+ * @package Benkle\FeedParser\Standards\Atom
  */
 class FeedItem implements ItemInterface, \JsonSerializable
 {

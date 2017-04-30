@@ -16,15 +16,15 @@
  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-namespace Benkle\Feeding\Standards\RSS\Rules;
+namespace Benkle\FeedParser\Standards\RSS\Rules;
 
 
-use Benkle\Feeding\Interfaces\ChannelInterface;
-use Benkle\Feeding\Interfaces\FeedInterface;
-use Benkle\Feeding\Interfaces\ItemInterface;
-use Benkle\Feeding\Interfaces\NodeInterface;
-use Benkle\Feeding\Interfaces\RuleInterface;
-use Benkle\Feeding\Parser;
+use Benkle\FeedParser\Interfaces\ChannelInterface;
+use Benkle\FeedParser\Interfaces\FeedInterface;
+use Benkle\FeedParser\Interfaces\ItemInterface;
+use Benkle\FeedParser\Interfaces\NodeInterface;
+use Benkle\FeedParser\Interfaces\RuleInterface;
+use Benkle\FeedParser\Parser;
 
 class LastBuildDateRuleTest extends \PHPUnit_Framework_TestCase
 {
@@ -39,8 +39,8 @@ class LastBuildDateRuleTest extends \PHPUnit_Framework_TestCase
     {
         $rule = new LastBuildDateRule();
         $dom = new \DOMDocument();
-        $feed = $this->getMock(FeedInterface::class);
-        $item = $this->getMock(ItemInterface::class);
+        $feed = $this->createMock(FeedInterface::class);
+        $item = $this->createMock(ItemInterface::class);
 
         $domNode = $dom->createElement('lastbuilddate');
         $this->assertEquals(true, $rule->canHandle($domNode, $feed));
@@ -60,13 +60,13 @@ class LastBuildDateRuleTest extends \PHPUnit_Framework_TestCase
         $rule = new LastBuildDateRule();
         $dom = new \DOMDocument();
         $domNode = $dom->createElement('lastbuilddate');
-        $feed = $this->getMock(FeedInterface::class);
+        $feed = $this->createMock(FeedInterface::class);
         $domNode->nodeValue = 'Mon, 15 Aug 2005 15:52:01 +0000';
         $parser = $this
             ->getMockBuilder(Parser::class)
             ->disableOriginalConstructor()
             ->getMock();
-        $channel = $this->getMock(FeedInterface::class);
+        $channel = $this->createMock(FeedInterface::class);
         $channel
             ->expects($this->atLeast(1))
             ->method('setLastModified')

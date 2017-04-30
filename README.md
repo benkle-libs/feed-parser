@@ -17,19 +17,19 @@ Requirements
 Installation
 ------------
 
-_Feeding_ can be included in the usual way with composer:
+_FeedParser_ can be included in the usual way with composer:
 
 ```sh
-    composer require benkle/feeding
+    composer require benkle/feed-parser
 ```
 
 Usage
 -----
 
-For a quick start you can instantiate the class `\Benkle\Feeding\Reader` and directly fetch a feed:
+For a quick start you can instantiate the class `\Benkle\FeedParser\Reader` and directly fetch a feed:
 
 ```php
-$reader = new \Benkle\Feeding\Reader();
+$reader = new \Benkle\FeedParser\Reader();
 $feed = $reader->read('http://xkcd.com/atom.xml');
 
 echo $feed->getTitle() . PHP_EOL;
@@ -42,20 +42,20 @@ The `Reader::read` can take urls, file pathes or the direct feed source, and wil
 
 ### Create your own rules
 
-_Feeding_ is based on rules, which are organized on standards.
+_FeedParser_ is based on rules, which are organized on standards.
 
-A rule can be any class implementing `\Benkle\Feeding\Interfaces\RuleInterface`:
+A rule can be any class implementing `\Benkle\FeedParser\Interfaces\RuleInterface`:
 
 ```php
-class MyRule implements \Benkle\Feeding\Interfaces\RuleInterface {
-    public function canHandle(\DOMNode $node, \Benkle\Feeding\Interfaces\NodeInterface $target)
+class MyRule implements \Benkle\FeedParser\Interfaces\RuleInterface {
+    public function canHandle(\DOMNode $node, \Benkle\FeedParser\Interfaces\NodeInterface $target)
     {
-        return $node->nodeName == 'title' && $target instanceof \Benkle\Feeding\Interfaces\ChannelInterface;
+        return $node->nodeName == 'title' && $target instanceof \Benkle\FeedParser\Interfaces\ChannelInterface;
     }
 
-    public function handle(\Benkle\Feeding\Parser $parser, \DOMNode $node, \Benkle\Feeding\Interfaces\NodeInterface $target)
+    public function handle(\Benkle\FeedParser\Parser $parser, \DOMNode $node, \Benkle\FeedParser\Interfaces\NodeInterface $target)
     {
-        /** \Benkle\Feeding\Interfaces\ChannelInterface $target */
+        /** \Benkle\FeedParser\Interfaces\ChannelInterface $target */
         $target->setTitle($node->nodeValue);
     }
 }
@@ -64,18 +64,18 @@ class MyRule implements \Benkle\Feeding\Interfaces\RuleInterface {
 Rules can be added to any standard via it's rule set, which is a priority ordered list:
 
 ```php
-/** @var \Benkle\Feeding\Interfaces\StandardInterface $standard */
+/** @var \Benkle\FeedParser\Interfaces\StandardInterface $standard */
 foreach ($reader->getStandards() as $standard) {
     $standard->getRules()->add(new MyRule(), 5); // Rules are ordered by priority
 }
 ```
 
-But often you might want to aggregate all your rules in a standard. Standards are classes implementing `\Benkle\Feeding\Interfaces\StandardInterface`:
+But often you might want to aggregate all your rules in a standard. Standards are classes implementing `\Benkle\FeedParser\Interfaces\StandardInterface`:
 
 ```php
-class MyStandard implements \Benkle\Feeding\Interfaces\StandardInterface {
-    use \Benkle\Feeding\Traits\WithParserTrait;
-    use \Benkle\Feeding\Traits\WithRuleSetTrait;
+class MyStandard implements \Benkle\FeedParser\Interfaces\StandardInterface {
+    use \Benkle\FeedParser\Traits\WithParserTrait;
+    use \Benkle\FeedParser\Traits\WithRuleSetTrait;
 
     public function __construct()
     {
@@ -84,7 +84,7 @@ class MyStandard implements \Benkle\Feeding\Interfaces\StandardInterface {
 
     public function newFeed()
     {
-        return new \Benkle\Feeding\Feed();
+        return new \Benkle\FeedParser\Feed();
     }
 
     public function getRootNode(\DOMDocument $dom)
@@ -115,10 +115,10 @@ Included standards are:
 
 ### Set your own DOM parser
 
-This library uses the PHP DOM library classes for it's XML traversing. To use your own library you have to write a wrapper arround it implementing `\Benkle\Feeding\Interfaces\DOMParserInterface`:
+This library uses the PHP DOM library classes for it's XML traversing. To use your own library you have to write a wrapper arround it implementing `\Benkle\FeedParser\Interfaces\DOMParserInterface`:
 
 ```php
-$reader->setDomParser(new class implements \Benkle\Feeding\Interfaces\DOMParserInterface {
+$reader->setDomParser(new class implements \Benkle\FeedParser\Interfaces\DOMParserInterface {
     public function parse($source)
     {
         $parser = new \MyFancy\DomParser();
@@ -127,13 +127,13 @@ $reader->setDomParser(new class implements \Benkle\Feeding\Interfaces\DOMParserI
 });
 ```
 
-_Feeding_ already include a wrapper for the standard library, which is fast but fails when a feeds isn't valid XML, and for the [Masterminds HTML5 parser](https://packagist.org/packages/masterminds/html5), which is more fault tolerant, but also way slower. It also includes a meta wrapper which will try any number of other wrappers it is given, allowing you to balance speed and reliability:
+_FeedParser_ already include a wrapper for the standard library, which is fast but fails when a feeds isn't valid XML, and for the [Masterminds HTML5 parser](https://packagist.org/packages/masterminds/html5), which is more fault tolerant, but also way slower. It also includes a meta wrapper which will try any number of other wrappers it is given, allowing you to balance speed and reliability:
 
 ```php
 $reader->setDomParser(
-    new \Benkle\Feeding\DOMParsers\FallbackStackParser(
-        new \Benkle\Feeding\DOMParsers\PHPDOMParser(),
-        new \Benkle\Feeding\DOMParsers\MastermindsHTML5Parser()
+    new \Benkle\FeedParser\DOMParsers\FallbackStackParser(
+        new \Benkle\FeedParser\DOMParsers\PHPDOMParser(),
+        new \Benkle\FeedParser\DOMParsers\MastermindsHTML5Parser()
     )
 );
 ```
@@ -142,10 +142,10 @@ __Note:__ This Wrapper implements `Psr\Log\LoggerAwareInterface` and will write 
 
 ### Set your own file access
 
-If you need your own access (e.g. because you want to use [flysystem](http://flysystem.thephpleague.com/)) you have to write a wrapper as well, this time implementing `\Benkle\Feeding\Interfaces\FileAccessInterface`:
+If you need your own access (e.g. because you want to use [flysystem](http://flysystem.thephpleague.com/)) you have to write a wrapper as well, this time implementing `\Benkle\FeedParser\Interfaces\FileAccessInterface`:
 
 ```php
-$reader->setFileAccess(new class implements \Benkle\Feeding\Interfaces\FileAccessInterface {
+$reader->setFileAccess(new class implements \Benkle\FeedParser\Interfaces\FileAccessInterface {
     private $myFs;
 
     public function __construct()
@@ -167,12 +167,12 @@ $reader->setFileAccess(new class implements \Benkle\Feeding\Interfaces\FileAcces
 
 ### More control
 
-If you need more control over what standards are loaded, and don't need file and http access, you can use the `\Benkle\Feeding\BareReader` class:
+If you need more control over what standards are loaded, and don't need file and http access, you can use the `\Benkle\FeedParser\BareReader` class:
 
 ```php
-$reader = new \Benkle\Feeding\BareReader();
-$reader->setDomParser(new \Benkle\Feeding\DOMParsers\PHPDOMParser());
-$reader->getStandards()->add(new \Benkle\Feeding\Standards\RSS\RSS20Standard());
+$reader = new \Benkle\FeedParser\BareReader();
+$reader->setDomParser(new \Benkle\FeedParser\DOMParsers\PHPDOMParser());
+$reader->getStandards()->add(new \Benkle\FeedParser\Standards\RSS\RSS20Standard());
 ```
 
 TODO

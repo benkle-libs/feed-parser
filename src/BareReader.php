@@ -16,19 +16,19 @@
  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-namespace Benkle\Feeding;
+namespace Benkle\FeedParser;
 
 
-use Benkle\Feeding\Exceptions\UnknownFeedFormatException;
-use Benkle\Feeding\Interfaces\DOMParserInterface;
-use Benkle\Feeding\Interfaces\StandardInterface;
-use Benkle\Feeding\Utilities\PriorityList;
+use Benkle\FeedParser\Exceptions\UnknownFeedFormatException;
+use Benkle\FeedParser\Interfaces\DOMParserInterface;
+use Benkle\FeedParser\Interfaces\StandardInterface;
+use Benkle\FeedParser\Utilities\PriorityList;
 
 /**
  * Class BareReader
  * This basic reader class handles parsing of source strings into a DOMDocument and selecting the right standard to
  * produce a feed object.
- * @package Benkle\Feeding
+ * @package Benkle\FeedParser
  */
 class BareReader
 {

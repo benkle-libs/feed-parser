@@ -16,15 +16,15 @@
  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-namespace Benkle\Feeding\Standards\Atom\Rules;
+namespace Benkle\FeedParser\Standards\Atom\Rules;
 
 
-use Benkle\Feeding\Interfaces\ChannelInterface;
-use Benkle\Feeding\Interfaces\FeedInterface;
-use Benkle\Feeding\Interfaces\ItemInterface;
-use Benkle\Feeding\Interfaces\RuleInterface;
-use Benkle\Feeding\Parser;
-use Benkle\Feeding\Standards\Atom\Atom10Standard;
+use Benkle\FeedParser\Interfaces\ChannelInterface;
+use Benkle\FeedParser\Interfaces\FeedInterface;
+use Benkle\FeedParser\Interfaces\ItemInterface;
+use Benkle\FeedParser\Interfaces\RuleInterface;
+use Benkle\FeedParser\Parser;
+use Benkle\FeedParser\Standards\Atom\Atom10Standard;
 
 class EnclosureLinkRuleTest extends \PHPUnit_Framework_TestCase
 {
@@ -39,7 +39,7 @@ class EnclosureLinkRuleTest extends \PHPUnit_Framework_TestCase
     {
         $rule = new EnclosureLinkRule();
         $dom = new \DOMDocument();
-        $item = $this->getMock(ItemInterface::class);
+        $item = $this->createMock(ItemInterface::class);
 
         $domNode = $this->createLinkTag($dom, 'enclosure', 'localhost');
         $this->assertEquals(true, $rule->canHandle($domNode, $item));
@@ -50,7 +50,7 @@ class EnclosureLinkRuleTest extends \PHPUnit_Framework_TestCase
         $domNode = $this->createLinkTag($dom, 'alternate', 'localhost');
         $this->assertEquals(false, $rule->canHandle($domNode, $item));
 
-        $item = $this->getMock(ChannelInterface::class);
+        $item = $this->createMock(ChannelInterface::class);
 
         $domNode = $this->createLinkTag($dom, 'enclosure', 'localhost');
         $this->assertEquals(false, $rule->canHandle($domNode, $item));
@@ -72,7 +72,7 @@ class EnclosureLinkRuleTest extends \PHPUnit_Framework_TestCase
             ->getMockBuilder(Parser::class)
             ->disableOriginalConstructor()
             ->getMock();
-        $item = $this->getMock(ItemInterface::class);
+        $item = $this->createMock(ItemInterface::class);
         $item
             ->expects($this->atLeast(1))
             ->method('addEnclosure');

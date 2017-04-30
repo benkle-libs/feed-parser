@@ -16,10 +16,10 @@
  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-namespace Benkle\Feeding\Standards\RSS;
+namespace Benkle\FeedParser\Standards\RSS;
 
 
-use Benkle\Feeding\Interfaces\StandardInterface;
+use Benkle\FeedParser\Interfaces\StandardInterface;
 
 class RSS20StandardTest extends \PHPUnit_Framework_TestCase
 {

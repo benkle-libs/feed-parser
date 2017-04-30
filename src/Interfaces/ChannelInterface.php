@@ -16,13 +16,13 @@
  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-namespace Benkle\Feeding\Interfaces;
-use Benkle\Feeding\Exceptions\RelationNotFoundException;
+namespace Benkle\FeedParser\Interfaces;
+use Benkle\FeedParser\Exceptions\RelationNotFoundException;
 
 /**
  * Interface ChannelInterface
  * The Channel interface bundles all properties that exists for both feeds and feed items.
- * @package Benkle\Feeding\Interfaces
+ * @package Benkle\FeedParser\Interfaces
  */
 interface ChannelInterface extends NodeInterface
 {

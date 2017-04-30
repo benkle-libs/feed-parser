@@ -16,11 +16,11 @@
  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-namespace Benkle\Feeding;
+namespace Benkle\FeedParser;
 
 
-use Benkle\Feeding\Interfaces\EnclosureInterface;
-use Benkle\Feeding\Interfaces\ItemInterface;
+use Benkle\FeedParser\Interfaces\EnclosureInterface;
+use Benkle\FeedParser\Interfaces\ItemInterface;
 
 class FeedItemTest extends \PHPUnit_Framework_TestCase
 {
@@ -76,7 +76,7 @@ class FeedItemTest extends \PHPUnit_Framework_TestCase
     public function testWithEnclosures()
     {
         $feedItem = $this->create();
-        $enclosure = $this->getMock(EnclosureInterface::class);
+        $enclosure = $this->createMock(EnclosureInterface::class);
 
         $this->assertCount(0, $feedItem->getEnclosures());
         $this->assertInternalType('array', $feedItem->getEnclosures());

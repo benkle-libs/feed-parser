@@ -16,12 +16,12 @@
  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-namespace Benkle\Feeding\Exceptions;
+namespace Benkle\FeedParser\Exceptions;
 
 /**
  * Class UnknownFeedFormatException
  * Gets thrown when we get a feed of unknown format.
- * @package Benkle\Feeding\Exceptions
+ * @package Benkle\FeedParser\Exceptions
  */
 class UnknownFeedFormatException extends Exception
 {

@@ -16,13 +16,13 @@
  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-namespace Benkle\Feeding\Standards\Atom;
+namespace Benkle\FeedParser\Standards\Atom;
 
 
-use Benkle\Feeding\Interfaces\FeedInterface;
-use Benkle\Feeding\Interfaces\StandardInterface;
-use Benkle\Feeding\Parser;
-use Benkle\Feeding\Utilities\PriorityList;
+use Benkle\FeedParser\Interfaces\FeedInterface;
+use Benkle\FeedParser\Interfaces\StandardInterface;
+use Benkle\FeedParser\Parser;
+use Benkle\FeedParser\Utilities\PriorityList;
 
 class Atom10StandardTest extends \PHPUnit_Framework_TestCase
 {
@@ -76,7 +76,7 @@ class Atom10StandardTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \Benkle\Feeding\Exceptions\InvalidNumberOfRootTagsException
+     * @expectedException \Benkle\FeedParser\Exceptions\InvalidNumberOfRootTagsException
      * @expectedExceptionMessage Invalid number of <feed> tags: 0
      */
     public function testFailWhenNoRootIsFound()
@@ -88,7 +88,7 @@ class Atom10StandardTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \Benkle\Feeding\Exceptions\InvalidNumberOfRootTagsException
+     * @expectedException \Benkle\FeedParser\Exceptions\InvalidNumberOfRootTagsException
      * @expectedExceptionMessage Invalid number of <feed> tags: 2
      */
     public function testFailWhenToManyRootsAreFound()

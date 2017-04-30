@@ -16,12 +16,12 @@
  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-namespace Benkle\Feeding;
+namespace Benkle\FeedParser;
 
 
-use Benkle\Feeding\Interfaces\DOMParserInterface;
-use Benkle\Feeding\Interfaces\FileAccessInterface;
-use Benkle\Feeding\Interfaces\StandardInterface;
+use Benkle\FeedParser\Interfaces\DOMParserInterface;
+use Benkle\FeedParser\Interfaces\FileAccessInterface;
+use Benkle\FeedParser\Interfaces\StandardInterface;
 use GuzzleHttp\Client;
 use Psr\Http\Message\MessageInterface;
 use Psr\Http\Message\StreamInterface;
@@ -39,7 +39,7 @@ class ReaderTest extends \PHPUnit_Framework_TestCase
     public function testSetAndGetHttpClient()
     {
         $reader = new Reader();
-        $client = $this->getMock(Client::class);
+        $client = $this->createMock(Client::class);
         $this->assertEquals($reader, $reader->setHttpClient($client));
         $this->assertEquals($client, $reader->getHttpClient());
     }
@@ -47,19 +47,19 @@ class ReaderTest extends \PHPUnit_Framework_TestCase
     public function testSetAndGetFileAccess()
     {
         $reader = new Reader();
-        $fileAccess = $this->getMock(FileAccessInterface::class);
+        $fileAccess = $this->createMock(FileAccessInterface::class);
         $this->assertEquals($reader, $reader->setFileAccess($fileAccess));
         $this->assertEquals($fileAccess, $reader->getFileAccess());
     }
 
     /**
-     * @expectedException \Benkle\Feeding\Exceptions\FileNotFoundException
+     * @expectedException \Benkle\FeedParser\Exceptions\FileNotFoundException
      * @expectedExceptionMessage File "test" not found
      */
     public function testReadFromNonexistingFile()
     {
         $reader = new Reader();
-        $fileAccess = $this->getMock(FileAccessInterface::class);
+        $fileAccess = $this->createMock(FileAccessInterface::class);
         $fileAccess
             ->expects($this->exactly(1))
             ->method('exists')
@@ -73,7 +73,7 @@ class ReaderTest extends \PHPUnit_Framework_TestCase
         $reader = new Reader();
         $this->mockBasicReader($reader);
 
-        $fileAccess = $this->getMock(FileAccessInterface::class);
+        $fileAccess = $this->createMock(FileAccessInterface::class);
         $fileAccess
             ->expects($this->exactly(1))
             ->method('exists')
@@ -94,17 +94,20 @@ class ReaderTest extends \PHPUnit_Framework_TestCase
         $reader = new Reader();
         $this->mockBasicReader($reader);
 
-        $body = $this->getMock(StreamInterface::class);
+        $body = $this->createMock(StreamInterface::class);
         $body
             ->expects($this->exactly(1))
             ->method('getContents')
             ->willReturn('test');
-        $response = $this->getMock(MessageInterface::class);
+        $response = $this->createMock(MessageInterface::class);
         $response
             ->expects($this->exactly(1))
             ->method('getBody')
             ->willReturn($body);
-        $client = $this->getMock(Client::class, ['get']);
+        $client = $this
+            ->getMockBuilder(Client::class)
+            ->setMethods(['get'])
+            ->getMock();
         $client
             ->expects($this->exactly(1))
             ->method('get')
@@ -120,17 +123,20 @@ class ReaderTest extends \PHPUnit_Framework_TestCase
         $reader = new Reader();
         $this->mockBasicReader($reader);
 
-        $body = $this->getMock(StreamInterface::class);
+        $body = $this->createMock(StreamInterface::class);
         $body
             ->expects($this->exactly(1))
             ->method('getContents')
             ->willReturn('test');
-        $response = $this->getMock(MessageInterface::class);
+        $response = $this->createMock(MessageInterface::class);
         $response
             ->expects($this->exactly(1))
             ->method('getBody')
             ->willReturn($body);
-        $client = $this->getMock(Client::class, ['get']);
+        $client = $this
+            ->getMockBuilder(Client::class)
+            ->setMethods(['get'])
+            ->getMock();
         $client
             ->expects($this->exactly(1))
             ->method('get')
@@ -146,7 +152,7 @@ class ReaderTest extends \PHPUnit_Framework_TestCase
         $reader = new Reader();
         $this->mockBasicReader($reader);
 
-        $fileAccess = $this->getMock(FileAccessInterface::class);
+        $fileAccess = $this->createMock(FileAccessInterface::class);
         $fileAccess
             ->expects($this->atLeast(1))
             ->method('exists')
@@ -167,7 +173,7 @@ class ReaderTest extends \PHPUnit_Framework_TestCase
         $reader = new Reader();
         $this->mockBasicReader($reader);
 
-        $fileAccess = $this->getMock(FileAccessInterface::class);
+        $fileAccess = $this->createMock(FileAccessInterface::class);
         $fileAccess
             ->expects($this->atLeast(1))
             ->method('exists')
@@ -180,7 +186,7 @@ class ReaderTest extends \PHPUnit_Framework_TestCase
 
     private function mockBasicReader(BareReader $reader)
     {
-        $parser = $this->getMock(DOMParserInterface::class);
+        $parser = $this->createMock(DOMParserInterface::class);
         $parser
             ->expects($this->exactly(1))
             ->method('parse')
@@ -188,7 +194,7 @@ class ReaderTest extends \PHPUnit_Framework_TestCase
             ->willReturn(new \DOMDocument());
         $reader->setDomParser($parser);
 
-        $standard = $this->getMock(StandardInterface::class);
+        $standard = $this->createMock(StandardInterface::class);
         $standard
             ->expects($this->atLeast(1))
             ->method('canHandle')
@@ -203,7 +209,7 @@ class ReaderTest extends \PHPUnit_Framework_TestCase
             ->expects($this->exactly(1))
             ->method('parse')
             ->willReturn('test');
-        $standard = $this->getMock(StandardInterface::class);
+        $standard = $this->createMock(StandardInterface::class);
         $standard
             ->expects($this->atLeast(1))
             ->method('canHandle')

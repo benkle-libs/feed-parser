@@ -16,10 +16,10 @@
  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-namespace Benkle\Feeding\FileAccess;
+namespace Benkle\FeedParser\FileAccess;
 
 
-use Benkle\Feeding\Interfaces\FileAccessInterface;
+use Benkle\FeedParser\Interfaces\FileAccessInterface;
 
 class BasicFileAccessTest extends \PHPUnit_Framework_TestCase
 {

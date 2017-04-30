@@ -16,13 +16,13 @@
  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-namespace Benkle\Feeding\Standards\RSS\Rules;
+namespace Benkle\FeedParser\Standards\RSS\Rules;
 
 
-use Benkle\Feeding\Interfaces\ChannelInterface;
-use Benkle\Feeding\Interfaces\ItemInterface;
-use Benkle\Feeding\Interfaces\RuleInterface;
-use Benkle\Feeding\Parser;
+use Benkle\FeedParser\Interfaces\ChannelInterface;
+use Benkle\FeedParser\Interfaces\ItemInterface;
+use Benkle\FeedParser\Interfaces\RuleInterface;
+use Benkle\FeedParser\Parser;
 
 class EnclosureRuleTest extends \PHPUnit_Framework_TestCase
 {
@@ -37,7 +37,7 @@ class EnclosureRuleTest extends \PHPUnit_Framework_TestCase
     {
         $rule = new EnclosureRule();
         $dom = new \DOMDocument();
-        $item = $this->getMock(ItemInterface::class);
+        $item = $this->createMock(ItemInterface::class);
 
         $domNode = $this->createEnclosureTag($dom, 'unknown', 'localhost', 0);
         $this->assertEquals(true, $rule->canHandle($domNode, $item));
@@ -45,7 +45,7 @@ class EnclosureRuleTest extends \PHPUnit_Framework_TestCase
         $domNode = $this->createEnclosureTag($dom, 'unknown', 'localhost', 0, false, true);
         $this->assertEquals(true, $rule->canHandle($domNode, $item));
 
-        $item = $this->getMock(ChannelInterface::class);
+        $item = $this->createMock(ChannelInterface::class);
 
         $domNode = $this->createEnclosureTag($dom, 'unknown', 'localhost', 0);
         $this->assertEquals(false, $rule->canHandle($domNode, $item));
@@ -61,7 +61,7 @@ class EnclosureRuleTest extends \PHPUnit_Framework_TestCase
             ->getMockBuilder(Parser::class)
             ->disableOriginalConstructor()
             ->getMock();
-        $item = $this->getMock(ItemInterface::class);
+        $item = $this->createMock(ItemInterface::class);
         $item
             ->expects($this->atLeast(1))
             ->method('addEnclosure');

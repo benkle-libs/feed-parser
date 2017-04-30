@@ -16,10 +16,10 @@
  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-namespace Benkle\Feeding\DOMParsers;
+namespace Benkle\FeedParser\DOMParsers;
 
 
-use Benkle\Feeding\Interfaces\DOMParserInterface;
+use Benkle\FeedParser\Interfaces\DOMParserInterface;
 use Psr\Log\LoggerInterface;
 
 class FallbackStackParserTest extends \PHPUnit_Framework_TestCase
@@ -41,7 +41,7 @@ class FallbackStackParserTest extends \PHPUnit_Framework_TestCase
     {
         $parsers = [];
 
-        $parser = $this->getMock(DOMParserInterface::class);
+        $parser = $this->createMock(DOMParserInterface::class);
         $parser
             ->expects($this->exactly(1))
             ->method('parse')
@@ -49,7 +49,7 @@ class FallbackStackParserTest extends \PHPUnit_Framework_TestCase
             ->willReturn(false);
         $parsers[] = $parser;
 
-        $parser = $this->getMock(DOMParserInterface::class);
+        $parser = $this->createMock(DOMParserInterface::class);
         $parser
             ->expects($this->exactly(1))
             ->method('parse')
@@ -77,7 +77,7 @@ class FallbackStackParserTest extends \PHPUnit_Framework_TestCase
      */
     public function testParseWithException()
     {
-        $parser = $this->getMock(DOMParserInterface::class);
+        $parser = $this->createMock(DOMParserInterface::class);
         $parser
             ->expects($this->exactly(1))
             ->method('parse')
@@ -86,7 +86,7 @@ class FallbackStackParserTest extends \PHPUnit_Framework_TestCase
         $parsers[] = $parser;
 
         $parser = FallbackStackParser::create($parsers);
-        $logger = $this->getMock(LoggerInterface::class);
+        $logger = $this->createMock(LoggerInterface::class);
         $logger
             ->expects($this->exactly(1))
             ->method('notice')

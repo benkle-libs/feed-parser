@@ -16,12 +16,12 @@
  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-namespace Benkle\Feeding\Exceptions;
+namespace Benkle\FeedParser\Exceptions;
 
 /**
  * Class Exception
  * Base class for our exceptions.
- * @package Benkle\Feeding\Exceptions
+ * @package Benkle\FeedParser\Exceptions
  */
 class Exception extends \Exception
 {

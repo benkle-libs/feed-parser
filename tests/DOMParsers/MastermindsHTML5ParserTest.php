@@ -16,11 +16,11 @@
  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-namespace Benkle\Feeding\DOMParsers;
+namespace Benkle\FeedParser\DOMParsers;
 
 
-use Benkle\Feeding\Interfaces\DOMParserInterface;
-use Benkle\Feeding\Standards\Atom\Atom10Standard;
+use Benkle\FeedParser\Interfaces\DOMParserInterface;
+use Benkle\FeedParser\Standards\Atom\Atom10Standard;
 
 class MastermindsHTML5ParserTest extends \PHPUnit_Framework_TestCase
 {

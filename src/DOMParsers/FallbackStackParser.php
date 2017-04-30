@@ -16,17 +16,17 @@
  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-namespace Benkle\Feeding\DOMParsers;
+namespace Benkle\FeedParser\DOMParsers;
 
 
-use Benkle\Feeding\Interfaces\DOMParserInterface;
+use Benkle\FeedParser\Interfaces\DOMParserInterface;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerAwareTrait;
 
 /**
  * Class FallbackStackParser
  * Bundles other DOMParsers so you can try the fast and picky ones first and the slow and tolerant ones only when necessary.
- * @package Benkle\Feeding\DOMParsers
+ * @package Benkle\FeedParser\DOMParsers
  */
 class FallbackStackParser implements DOMParserInterface, LoggerAwareInterface
 {

@@ -16,14 +16,14 @@
  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-namespace Benkle\Feeding\Utilities;
-use Benkle\Feeding\Exceptions\InvalidObjectClassException;
+namespace Benkle\FeedParser\Utilities;
+use Benkle\FeedParser\Exceptions\InvalidObjectClassException;
 
 /**
  * Class PriorityList
  * This class is for prioritised lists.
  * It might be moved to another package in the future.
- * @package Benkle\Feeding\Utilities
+ * @package Benkle\FeedParser\Utilities
  */
 class PriorityList implements \Iterator
 {

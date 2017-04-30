@@ -16,14 +16,14 @@
  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-namespace Benkle\Feeding\Standards\Atom\Rules;
+namespace Benkle\FeedParser\Standards\Atom\Rules;
 
 
-use Benkle\Feeding\Interfaces\FeedInterface;
-use Benkle\Feeding\Interfaces\ItemInterface;
-use Benkle\Feeding\Interfaces\RuleInterface;
-use Benkle\Feeding\Parser;
-use Benkle\Feeding\Standards\Atom\Atom10Standard;
+use Benkle\FeedParser\Interfaces\FeedInterface;
+use Benkle\FeedParser\Interfaces\ItemInterface;
+use Benkle\FeedParser\Interfaces\RuleInterface;
+use Benkle\FeedParser\Parser;
+use Benkle\FeedParser\Standards\Atom\Atom10Standard;
 
 class EntryRuleTest extends \PHPUnit_Framework_TestCase
 {
@@ -38,8 +38,8 @@ class EntryRuleTest extends \PHPUnit_Framework_TestCase
     {
         $rule = new EntryRule();
         $dom = new \DOMDocument();
-        $feed = $this->getMock(FeedInterface::class);
-        $item = $this->getMock(ItemInterface::class);
+        $feed = $this->createMock(FeedInterface::class);
+        $item = $this->createMock(ItemInterface::class);
 
         $domNode = $dom->createElementNS(Atom10Standard::NAMESPACE_URI, 'entry');
         $this->assertEquals(true, $rule->canHandle($domNode, $feed));
@@ -63,7 +63,7 @@ class EntryRuleTest extends \PHPUnit_Framework_TestCase
             ->getMockBuilder(Parser::class)
             ->disableOriginalConstructor()
             ->getMock();
-        $feed = $this->getMock(FeedInterface::class);
+        $feed = $this->createMock(FeedInterface::class);
         $feed
             ->expects($this->atLeast(1))
             ->method('addItem')

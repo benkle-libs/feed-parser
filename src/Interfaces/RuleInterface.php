@@ -16,9 +16,9 @@
  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-namespace Benkle\Feeding\Interfaces;
+namespace Benkle\FeedParser\Interfaces;
 
-use Benkle\Feeding\Parser;
+use Benkle\FeedParser\Parser;
 
 interface RuleInterface
 {

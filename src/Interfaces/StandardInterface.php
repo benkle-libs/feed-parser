@@ -16,17 +16,17 @@
  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-namespace Benkle\Feeding\Interfaces;
+namespace Benkle\FeedParser\Interfaces;
 
 
-use Benkle\Feeding\Exceptions\InvalidNumberOfRootTagsException;
-use Benkle\Feeding\Parser;
-use Benkle\Feeding\Utilities\PriorityList;
+use Benkle\FeedParser\Exceptions\InvalidNumberOfRootTagsException;
+use Benkle\FeedParser\Parser;
+use Benkle\FeedParser\Utilities\PriorityList;
 
 /**
  * Interface StandardInterface
  * A Standard is a combination of rule set, feed class factory and feed identification.
- * @package Benkle\Feeding\Interfaces
+ * @package Benkle\FeedParser\Interfaces
  */
 interface StandardInterface
 {

@@ -16,19 +16,19 @@
  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-namespace Benkle\Feeding\Standards\RSS\Rules;
+namespace Benkle\FeedParser\Standards\RSS\Rules;
 
 
-use Benkle\Feeding\Interfaces\ChannelInterface;
-use Benkle\Feeding\Interfaces\NodeInterface;
-use Benkle\Feeding\Interfaces\RuleInterface;
-use Benkle\Feeding\Parser;
+use Benkle\FeedParser\Interfaces\ChannelInterface;
+use Benkle\FeedParser\Interfaces\NodeInterface;
+use Benkle\FeedParser\Interfaces\RuleInterface;
+use Benkle\FeedParser\Parser;
 
 /**
  * Class LinkRule
  * Parse the RSS link tag.
  * This one can be nasty depending on the dom parser used.
- * @package Benkle\Feeding\Standards\RSS\Rules
+ * @package Benkle\FeedParser\Standards\RSS\Rules
  */
 class LinkRule implements RuleInterface
 {

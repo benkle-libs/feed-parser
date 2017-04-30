@@ -16,13 +16,13 @@
  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-namespace Benkle\Feeding\Standards\Atom\Rules;
+namespace Benkle\FeedParser\Standards\Atom\Rules;
 
 
-use Benkle\Feeding\Interfaces\ChannelInterface;
-use Benkle\Feeding\Interfaces\RuleInterface;
-use Benkle\Feeding\Parser;
-use Benkle\Feeding\Standards\Atom\Atom10Standard;
+use Benkle\FeedParser\Interfaces\ChannelInterface;
+use Benkle\FeedParser\Interfaces\RuleInterface;
+use Benkle\FeedParser\Parser;
+use Benkle\FeedParser\Standards\Atom\Atom10Standard;
 
 class RelationsLinkRuleTest extends \PHPUnit_Framework_TestCase
 {
@@ -36,7 +36,7 @@ class RelationsLinkRuleTest extends \PHPUnit_Framework_TestCase
     {
         $rule = new RelationsLinkRule();
         $dom = new \DOMDocument();
-        $channel = $this->getMock(ChannelInterface::class);
+        $channel = $this->createMock(ChannelInterface::class);
 
         $domNode = $this->createLinkTag($dom, 'test', 'localhost');
         $this->assertEquals(true, $rule->canHandle($domNode, $channel));
@@ -54,7 +54,7 @@ class RelationsLinkRuleTest extends \PHPUnit_Framework_TestCase
             ->getMockBuilder(Parser::class)
             ->disableOriginalConstructor()
             ->getMock();
-        $channel = $this->getMock(ChannelInterface::class);
+        $channel = $this->createMock(ChannelInterface::class);
         $channel
             ->expects($this->atLeast(1))
             ->method('setRelation')

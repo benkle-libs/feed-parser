@@ -16,13 +16,13 @@
  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-namespace Benkle\Feeding\Standards\RSS\Rules;
+namespace Benkle\FeedParser\Standards\RSS\Rules;
 
 
-use Benkle\Feeding\Interfaces\FeedInterface;
-use Benkle\Feeding\Interfaces\ItemInterface;
-use Benkle\Feeding\Interfaces\RuleInterface;
-use Benkle\Feeding\Parser;
+use Benkle\FeedParser\Interfaces\FeedInterface;
+use Benkle\FeedParser\Interfaces\ItemInterface;
+use Benkle\FeedParser\Interfaces\RuleInterface;
+use Benkle\FeedParser\Parser;
 
 class ItemRuleTest extends \PHPUnit_Framework_TestCase
 {
@@ -37,8 +37,8 @@ class ItemRuleTest extends \PHPUnit_Framework_TestCase
     {
         $rule = new ItemRule();
         $dom = new \DOMDocument();
-        $feed = $this->getMock(FeedInterface::class);
-        $item = $this->getMock(ItemInterface::class);
+        $feed = $this->createMock(FeedInterface::class);
+        $item = $this->createMock(ItemInterface::class);
 
         $domNode = $dom->createElement('item');
         $this->assertEquals(true, $rule->canHandle($domNode, $feed));
@@ -62,7 +62,7 @@ class ItemRuleTest extends \PHPUnit_Framework_TestCase
             ->getMockBuilder(Parser::class)
             ->disableOriginalConstructor()
             ->getMock();
-        $feed = $this->getMock(FeedInterface::class);
+        $feed = $this->createMock(FeedInterface::class);
         $feed
             ->expects($this->atLeast(1))
             ->method('addItem')

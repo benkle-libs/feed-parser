@@ -16,11 +16,11 @@
  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-namespace Benkle\Feeding\Standards\Atom;
+namespace Benkle\FeedParser\Standards\Atom;
 
 
-use Benkle\Feeding\Interfaces\FeedInterface;
-use Benkle\Feeding\Interfaces\ItemInterface;
+use Benkle\FeedParser\Interfaces\FeedInterface;
+use Benkle\FeedParser\Interfaces\ItemInterface;
 
 class FeedTest extends \PHPUnit_Framework_TestCase
 {
@@ -101,7 +101,7 @@ class FeedTest extends \PHPUnit_Framework_TestCase
     {
         $feed = $this->create();
         $this->assertEmpty($feed->getItems());
-        $feedItem = $this->getMock(ItemInterface::class);
+        $feedItem = $this->createMock(ItemInterface::class);
         $feed->addItem($feedItem);
         $this->assertCount(1, $feed->getItems());
         $this->assertContains($feedItem, $feed->getItems());
@@ -120,7 +120,7 @@ class FeedTest extends \PHPUnit_Framework_TestCase
         $lastModified = new \DateTime('2000-01-01');
         $publicId = uniqid();
         $url = uniqid();
-        $feedItem = $this->getMock(ItemInterface::class);
+        $feedItem = $this->createMock(ItemInterface::class);
         $relation = uniqid();
 
         $feed->setTitle($title);
@@ -190,7 +190,7 @@ class FeedTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \Benkle\Feeding\Exceptions\RelationNotFoundException
+     * @expectedException \Benkle\FeedParser\Exceptions\RelationNotFoundException
      * @expectedExceptionMessage Relation "test" not found
      */
     public function testWithRelationsException()

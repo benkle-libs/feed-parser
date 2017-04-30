@@ -16,15 +16,15 @@
  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-namespace Benkle\Feeding\FileAccess;
+namespace Benkle\FeedParser\FileAccess;
 
 
-use Benkle\Feeding\Interfaces\FileAccessInterface;
+use Benkle\FeedParser\Interfaces\FileAccessInterface;
 
 /**
  * Class BasicFileAccess
  * Implement file system access based on PHP's own functions.
- * @package Benkle\Feeding\FileAccess
+ * @package Benkle\FeedParser\FileAccess
  */
 class BasicFileAccess implements FileAccessInterface
 {

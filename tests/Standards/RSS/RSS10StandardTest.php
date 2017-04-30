@@ -16,10 +16,10 @@
  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-namespace Benkle\Feeding\Standards\RSS;
+namespace Benkle\FeedParser\Standards\RSS;
 
 
-use Benkle\Feeding\Interfaces\StandardInterface;
+use Benkle\FeedParser\Interfaces\StandardInterface;
 
 class RSS10StandardTest extends \PHPUnit_Framework_TestCase
 {
@@ -56,7 +56,7 @@ class RSS10StandardTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \Benkle\Feeding\Exceptions\InvalidNumberOfRootTagsException
+     * @expectedException \Benkle\FeedParser\Exceptions\InvalidNumberOfRootTagsException
      * @expectedExceptionMessage Invalid number of <RDF> tags: 0
      */
     public function testFailWhenNoRootIsFound()
@@ -68,7 +68,7 @@ class RSS10StandardTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \Benkle\Feeding\Exceptions\InvalidNumberOfRootTagsException
+     * @expectedException \Benkle\FeedParser\Exceptions\InvalidNumberOfRootTagsException
      * @expectedExceptionMessage Invalid number of <RDF> tags: 2
      */
     public function testFailWhenToManyRootsAreFound()

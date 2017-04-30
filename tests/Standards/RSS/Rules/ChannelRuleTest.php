@@ -16,13 +16,13 @@
  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-namespace Benkle\Feeding\Standards\RSS\Rules;
+namespace Benkle\FeedParser\Standards\RSS\Rules;
 
 
-use Benkle\Feeding\Interfaces\FeedInterface;
-use Benkle\Feeding\Interfaces\ItemInterface;
-use Benkle\Feeding\Interfaces\RuleInterface;
-use Benkle\Feeding\Parser;
+use Benkle\FeedParser\Interfaces\FeedInterface;
+use Benkle\FeedParser\Interfaces\ItemInterface;
+use Benkle\FeedParser\Interfaces\RuleInterface;
+use Benkle\FeedParser\Parser;
 
 class ChannelRuleTest extends \PHPUnit_Framework_TestCase
 {
@@ -37,8 +37,8 @@ class ChannelRuleTest extends \PHPUnit_Framework_TestCase
     {
         $rule = new ChannelRule();
         $dom = new \DOMDocument();
-        $feed = $this->getMock(FeedInterface::class);
-        $item = $this->getMock(ItemInterface::class);
+        $feed = $this->createMock(FeedInterface::class);
+        $item = $this->createMock(ItemInterface::class);
 
         $domNode = $dom->createElement('channel');
         $this->assertEquals(true, $rule->canHandle($domNode, $feed));
@@ -58,7 +58,7 @@ class ChannelRuleTest extends \PHPUnit_Framework_TestCase
         $rule = new ChannelRule();
         $dom = new \DOMDocument();
         $domNode = $dom->createElement('channel');
-        $feed = $this->getMock(FeedInterface::class);
+        $feed = $this->createMock(FeedInterface::class);
         $parser = $this
             ->getMockBuilder(Parser::class)
             ->disableOriginalConstructor()

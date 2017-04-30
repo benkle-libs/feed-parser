@@ -16,14 +16,14 @@
  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-namespace Benkle\Feeding\Standards\RSS;
+namespace Benkle\FeedParser\Standards\RSS;
 
-use Benkle\Feeding\Exceptions\InvalidNumberOfRootTagsException;
+use Benkle\FeedParser\Exceptions\InvalidNumberOfRootTagsException;
 
 /**
  * Class RSS10Standard
  * Standard for handling RSS 1.0
- * @package Benkle\Feeding\Standards\RSS
+ * @package Benkle\FeedParser\Standards\RSS
  */
 class RSS10Standard extends RSS09Standard
 {

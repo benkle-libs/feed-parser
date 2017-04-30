@@ -16,18 +16,18 @@
  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-namespace Benkle\Feeding;
+namespace Benkle\FeedParser;
 
 
-use Benkle\Feeding\Interfaces\EnclosureInterface;
-use Benkle\Feeding\Traits\WithLengthTrait;
-use Benkle\Feeding\Traits\WithTitleTrait;
-use Benkle\Feeding\Traits\WithTypeTrait;
-use Benkle\Feeding\Traits\WithUrlTrait;
+use Benkle\FeedParser\Interfaces\EnclosureInterface;
+use Benkle\FeedParser\Traits\WithLengthTrait;
+use Benkle\FeedParser\Traits\WithTitleTrait;
+use Benkle\FeedParser\Traits\WithTypeTrait;
+use Benkle\FeedParser\Traits\WithUrlTrait;
 
 /**
  * Class Enclosure
- * @package Benkle\Feeding
+ * @package Benkle\FeedParser
  */
 class Enclosure implements EnclosureInterface, \JsonSerializable
 {

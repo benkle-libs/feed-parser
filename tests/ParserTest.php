@@ -16,22 +16,22 @@
  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-namespace Benkle\Feeding;
+namespace Benkle\FeedParser;
 
 
-use Benkle\Feeding\Interfaces\ChannelInterface;
-use Benkle\Feeding\Interfaces\FeedInterface;
-use Benkle\Feeding\Interfaces\NodeInterface;
-use Benkle\Feeding\Interfaces\RuleInterface;
-use Benkle\Feeding\Interfaces\StandardInterface;
-use Benkle\Feeding\Utilities\PriorityList;
+use Benkle\FeedParser\Interfaces\ChannelInterface;
+use Benkle\FeedParser\Interfaces\FeedInterface;
+use Benkle\FeedParser\Interfaces\NodeInterface;
+use Benkle\FeedParser\Interfaces\RuleInterface;
+use Benkle\FeedParser\Interfaces\StandardInterface;
+use Benkle\FeedParser\Utilities\PriorityList;
 
 class ParserTest extends \PHPUnit_Framework_TestCase
 {
 
     public function testNewParser()
     {
-        $standard = $this->getMock(StandardInterface::class);
+        $standard = $this->createMock(StandardInterface::class);
         $parser = new Parser($standard);
         $this->assertInstanceOf(Parser::class, $parser);
         return $parser;
@@ -59,10 +59,10 @@ class ParserTest extends \PHPUnit_Framework_TestCase
         $node3 = $dom->createElement('test3');
         $node->appendChild($node3);
 
-        $target = $this->getMock(ChannelInterface::class);
+        $target = $this->createMock(ChannelInterface::class);
 
         $rules = new PriorityList(RuleInterface::class);
-        $rule = $this->getMock(RuleInterface::class);
+        $rule = $this->createMock(RuleInterface::class);
         $rule
             ->expects($this->atLeast(1))
             ->method('canHandle')
@@ -87,7 +87,7 @@ class ParserTest extends \PHPUnit_Framework_TestCase
             );
         $rules->add($rule);
 
-        $rule2 = $this->getMock(RuleInterface::class);
+        $rule2 = $this->createMock(RuleInterface::class);
         $rule2->expects($this->atLeast(1))->method('canHandle')->willReturn(false);
         $rule2->expects($this->exactly(0))->method('handle');
         $rules->add($rule2);
@@ -113,7 +113,7 @@ class ParserTest extends \PHPUnit_Framework_TestCase
         $dom = new \DOMDocument();
         $root = $dom->createElement('root');
 
-        $feed = $this->getMock(FeedInterface::class);
+        $feed = $this->createMock(FeedInterface::class);
 
         /** @var \PHPUnit_Framework_MockObject_MockObject $standard */
         $standard = $parser->getStandard();

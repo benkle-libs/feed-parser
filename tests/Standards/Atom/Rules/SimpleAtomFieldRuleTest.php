@@ -16,14 +16,14 @@
  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-namespace Benkle\Feeding\Standards\Atom\Rules;
+namespace Benkle\FeedParser\Standards\Atom\Rules;
 
 
-use Benkle\Feeding\Interfaces\ChannelInterface;
-use Benkle\Feeding\Interfaces\NodeInterface;
-use Benkle\Feeding\Interfaces\RuleInterface;
-use Benkle\Feeding\Parser;
-use Benkle\Feeding\Standards\Atom\Atom10Standard;
+use Benkle\FeedParser\Interfaces\ChannelInterface;
+use Benkle\FeedParser\Interfaces\NodeInterface;
+use Benkle\FeedParser\Interfaces\RuleInterface;
+use Benkle\FeedParser\Parser;
+use Benkle\FeedParser\Standards\Atom\Atom10Standard;
 
 class SimpleAtomFieldRuleTest extends \PHPUnit_Framework_TestCase
 {
@@ -38,8 +38,8 @@ class SimpleAtomFieldRuleTest extends \PHPUnit_Framework_TestCase
     {
         $rule = new SimpleAtomFieldRule('test', '');
         $dom = new \DOMDocument();
-        $channel = $this->getMock(ChannelInterface::class);
-        $node = $this->getMock(NodeInterface::class);
+        $channel = $this->createMock(ChannelInterface::class);
+        $node = $this->createMock(NodeInterface::class);
 
         $domNode = $dom->createElementNS(Atom10Standard::NAMESPACE_URI, 'test');
         $this->assertEquals(true, $rule->canHandle($domNode, $channel));
@@ -64,7 +64,7 @@ class SimpleAtomFieldRuleTest extends \PHPUnit_Framework_TestCase
             ->getMockBuilder(Parser::class)
             ->disableOriginalConstructor()
             ->getMock();
-        $channel = $this->getMock(ChannelInterface::class);
+        $channel = $this->createMock(ChannelInterface::class);
         $channel
             ->expects($this->atLeast(1))
             ->method('setTitle')

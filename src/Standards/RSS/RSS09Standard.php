@@ -16,28 +16,28 @@
  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-namespace Benkle\Feeding\Standards\RSS;
+namespace Benkle\FeedParser\Standards\RSS;
 
 
-use Benkle\Feeding\Exceptions\InvalidNumberOfRootTagsException;
-use Benkle\Feeding\Feed;
-use Benkle\Feeding\Interfaces\FeedInterface;
-use Benkle\Feeding\Interfaces\StandardInterface;
-use Benkle\Feeding\Standards\Atom\Rules\RelationsLinkRule;
-use Benkle\Feeding\Standards\RSS\Rules\ChannelRule;
-use Benkle\Feeding\Standards\RSS\Rules\EnclosureRule;
-use Benkle\Feeding\Standards\RSS\Rules\ItemRule;
-use Benkle\Feeding\Standards\RSS\Rules\LastBuildDateRule;
-use Benkle\Feeding\Standards\RSS\Rules\LinkRule;
-use Benkle\Feeding\Standards\RSS\Rules\PubDateRule;
-use Benkle\Feeding\Standards\RSS\Rules\SimpleRSSFieldRule;
-use Benkle\Feeding\Traits\WithParserTrait;
-use Benkle\Feeding\Traits\WithRuleSetTrait;
+use Benkle\FeedParser\Exceptions\InvalidNumberOfRootTagsException;
+use Benkle\FeedParser\Feed;
+use Benkle\FeedParser\Interfaces\FeedInterface;
+use Benkle\FeedParser\Interfaces\StandardInterface;
+use Benkle\FeedParser\Standards\Atom\Rules\RelationsLinkRule;
+use Benkle\FeedParser\Standards\RSS\Rules\ChannelRule;
+use Benkle\FeedParser\Standards\RSS\Rules\EnclosureRule;
+use Benkle\FeedParser\Standards\RSS\Rules\ItemRule;
+use Benkle\FeedParser\Standards\RSS\Rules\LastBuildDateRule;
+use Benkle\FeedParser\Standards\RSS\Rules\LinkRule;
+use Benkle\FeedParser\Standards\RSS\Rules\PubDateRule;
+use Benkle\FeedParser\Standards\RSS\Rules\SimpleRSSFieldRule;
+use Benkle\FeedParser\Traits\WithParserTrait;
+use Benkle\FeedParser\Traits\WithRuleSetTrait;
 
 /**
  * Class RSS09Standard
  * Standard for handling RSS 0.9*
- * @package Benkle\Feeding\Standards\RSS
+ * @package Benkle\FeedParser\Standards\RSS
  */
 class RSS09Standard implements StandardInterface
 {

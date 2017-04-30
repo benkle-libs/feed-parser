@@ -16,12 +16,12 @@
  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-namespace Benkle\Feeding;
+namespace Benkle\FeedParser;
 
 
-use Benkle\Feeding\Interfaces\DOMParserInterface;
-use Benkle\Feeding\Interfaces\StandardInterface;
-use Benkle\Feeding\Utilities\PriorityList;
+use Benkle\FeedParser\Interfaces\DOMParserInterface;
+use Benkle\FeedParser\Interfaces\StandardInterface;
+use Benkle\FeedParser\Utilities\PriorityList;
 
 class BareReaderTest extends \PHPUnit_Framework_TestCase
 {
@@ -41,19 +41,19 @@ class BareReaderTest extends \PHPUnit_Framework_TestCase
     public function testSetAndGetDOMParser()
     {
         $reader = new BareReader();
-        $parser = $this->getMock(DOMParserInterface::class);
+        $parser = $this->createMock(DOMParserInterface::class);
         $this->assertEquals($reader, $reader->setDomParser($parser));
         $this->assertEquals($parser, $reader->getDomParser());
     }
 
     /**
-     * @expectedException \Benkle\Feeding\Exceptions\UnknownFeedFormatException
+     * @expectedException \Benkle\FeedParser\Exceptions\UnknownFeedFormatException
      * @expectedExceptionMessage Unknown feed format
      */
     public function testReadWithoutStandards()
     {
         $reader = new BareReader();
-        $parser = $this->getMock(DOMParserInterface::class);
+        $parser = $this->createMock(DOMParserInterface::class);
         $parser
             ->expects($this->exactly(1))
             ->method('parse')
@@ -67,7 +67,7 @@ class BareReaderTest extends \PHPUnit_Framework_TestCase
     public function testReadWithStandards()
     {
         $reader = new BareReader();
-        $parser = $this->getMock(DOMParserInterface::class);
+        $parser = $this->createMock(DOMParserInterface::class);
         $parser
             ->expects($this->exactly(1))
             ->method('parse')
@@ -75,7 +75,7 @@ class BareReaderTest extends \PHPUnit_Framework_TestCase
             ->willReturn(new \DOMDocument());
         $reader->setDomParser($parser);
 
-        $standard = $this->getMock(StandardInterface::class);
+        $standard = $this->createMock(StandardInterface::class);
         $standard
             ->expects($this->atLeast(1))
             ->method('canHandle')
@@ -90,7 +90,7 @@ class BareReaderTest extends \PHPUnit_Framework_TestCase
             ->expects($this->exactly(1))
             ->method('parse')
             ->willReturn('test');
-        $standard = $this->getMock(StandardInterface::class);
+        $standard = $this->createMock(StandardInterface::class);
         $standard
             ->expects($this->atLeast(1))
             ->method('canHandle')
