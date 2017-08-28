@@ -40,6 +40,7 @@ trait WithPublicIdTrait
     public function setPublicId($publicId)
     {
         $this->publicId = $publicId;
+        return $this;
     }
 
 }
