@@ -20,6 +20,7 @@ namespace Benkle\FeedParser\Standards\Atom\Rules;
 
 
 use Benkle\FeedInterfaces\ChannelInterface;
+use Benkle\FeedInterfaces\RelationLinkInterface;
 use Benkle\FeedParser\Interfaces\RuleInterface;
 use Benkle\FeedParser\Parser;
 use Benkle\FeedParser\Standards\Atom\Atom10Standard;
@@ -58,7 +59,7 @@ class RelationsLinkRuleTest extends \PHPUnit_Framework_TestCase
         $channel
             ->expects($this->atLeast(1))
             ->method('setRelation')
-            ->with('test', 'localhost');
+            ->with($this->isInstanceOf(RelationLinkInterface::class));
 
         $rule->handle($parser, $domNode, $channel);
     }

@@ -21,28 +21,33 @@ namespace Benkle\FeedParser\Traits;
 
 
 use Benkle\FeedInterfaces\Exceptions\RelationNotFoundException;
+use Benkle\FeedInterfaces\RelationLinkInterface;
+use Benkle\FeedParser\RelationLink;
 
 trait WithRelationsTrait
 {
+    /**
+     * @var RelationLinkInterface[]
+     */
     private $relations = [];
 
     /**
      * Get a relation link.
-     * @param string $relation
-     * @return string
+     * @param string $type
+     * @return RelationLinkInterface
      * @throws RelationNotFoundException
      */
-    public function getRelation($relation)
+    public function getRelation($type)
     {
-        if (!isset($this->relations[$relation])) {
-            throw new RelationNotFoundException($relation);
+        if (!isset($this->relations[$type])) {
+            throw new RelationNotFoundException($type);
         }
-        return $this->relations[$relation];
+        return $this->relations[$type];
     }
 
     /**
      * Get all relations.
-     * @return string[]
+     * @return RelationLinkInterface[]
      */
     public function getRelations()
     {
@@ -51,13 +56,12 @@ trait WithRelationsTrait
 
     /**
      * Set a relation link.
-     * @param string $relation
-     * @param string $link
+     * @param RelationLinkInterface $relation
      * @return $this
      */
-    public function setRelation($relation, $link)
+    public function setRelation(RelationLinkInterface $relation)
     {
-        $this->relations[$relation] = $link;
+        $this->relations[$relation->getRelationType()] = $relation;
         return $this;
     }
 

@@ -21,6 +21,7 @@ namespace Benkle\FeedParser\Standards\Atom;
 
 
 use Benkle\FeedInterfaces\ItemInterface;
+use Benkle\FeedInterfaces\RelationLinkInterface;
 
 class FeedItemTest extends \PHPUnit_Framework_TestCase
 {
@@ -57,12 +58,21 @@ class FeedItemTest extends \PHPUnit_Framework_TestCase
         $link = uniqid();
         $feedItem->setLink($link);
         $this->assertEquals($link, $feedItem->getLink());
-        $this->assertEquals($link, $feedItem->getRelation('alternate'));
+        $this->assertEquals($link, $feedItem->getRelation('alternate')->getUrl());
 
         $link = uniqid();
-        $feedItem->setRelation('alternate', $link);
+        $relationMock = $this->createMock(RelationLinkInterface::class);
+        $relationMock
+            ->expects($this->atLeastOnce())
+            ->method('getUrl')
+            ->willReturn($link);
+        $relationMock
+            ->expects($this->atLeastOnce())
+            ->method('getRelationType')
+            ->willReturn('alternate');
+        $feedItem->setRelation($relationMock);
         $this->assertEquals($link, $feedItem->getLink());
-        $this->assertEquals($link, $feedItem->getRelation('alternate'));
+        $this->assertEquals($link, $feedItem->getRelation('alternate')->getUrl());
     }
 
     public function testWithDescription()
@@ -90,14 +100,18 @@ class FeedItemTest extends \PHPUnit_Framework_TestCase
         $link = uniqid();
         $lastModified = new \DateTime('2000-01-01');
         $publicId = uniqid();
-        $relation = uniqid();
+        $relation = $this->createMock(RelationLinkInterface::class);
+        $relation
+            ->expects($this->atLeastOnce())
+            ->method('getRelationType')
+            ->willReturn('test');
 
         $feedItem->setTitle($title);
         $feedItem->setDescription($description);
         $feedItem->setLink($link);
         $feedItem->setLastModified($lastModified);
         $feedItem->setPublicId($publicId);
-        $feedItem->setRelation('test', $relation);
+        $feedItem->setRelation($relation);
 
         $protoJson = $feedItem->jsonSerialize();
 

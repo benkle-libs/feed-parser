@@ -20,6 +20,7 @@ namespace Benkle\FeedParser\Standards\Atom;
 
 
 use Benkle\FeedInterfaces\FeedInterface;
+use Benkle\FeedParser\Traits\WithMappedLinkTrait;
 use Benkle\FeedParser\Traits\WithDescriptionTrait;
 use Benkle\FeedParser\Traits\WithFeedItemsTrait;
 use Benkle\FeedParser\Traits\WithLastModifiedTrait;
@@ -35,7 +36,8 @@ use Benkle\FeedParser\Traits\WithTitleTrait;
 class Feed implements FeedInterface, \JsonSerializable
 {
     use WithTitleTrait, WithPublicIdTrait, WithDescriptionTrait,
-        WithLastModifiedTrait, WithFeedItemsTrait, WithRelationsTrait;
+        WithLastModifiedTrait, WithFeedItemsTrait, WithRelationsTrait,
+        WithMappedLinkTrait;
 
     /**
      * Specify data which should be serialized to JSON
@@ -56,60 +58,6 @@ class Feed implements FeedInterface, \JsonSerializable
             'items'        => $this->getItems(),
             'relations'    => $this->getRelations(),
         ];
-        return $result;
-    }
-
-    /**
-     * Get the (canonical) link.
-     * @return string
-     */
-    public function getLink()
-    {
-        return $this->getRelationSilently('alternate');
-    }
-
-    /**
-     * Set the (canonical) link.
-     * @param string $link
-     * @return $this
-     */
-    public function setLink($link)
-    {
-        return $this->setRelation('alternate', $link);
-    }
-
-    /**
-     * Get the feed url.
-     * @return string
-     */
-    public function getUrl()
-    {
-        return $this->getRelationSilently('self');
-    }
-
-    /**
-     * Set the feed url.
-     * @param string $url
-     * @return $this
-     */
-    public function setUrl($url)
-    {
-        return $this->setRelation('self', $url);
-    }
-
-    /**
-     * Get a relation link, failing silently.
-     * @codeCoverageIgnore
-     * @param string $rel
-     * @return string
-     */
-    private function getRelationSilently($rel)
-    {
-        $result = '';
-        try {
-            $result = $this->getRelation($rel);
-        } catch (\Exception $e) {
-        }
         return $result;
     }
 }

@@ -20,9 +20,12 @@ namespace Benkle\FeedParser\Standards\Atom;
 
 
 use Benkle\FeedInterfaces\ItemInterface;
+use Benkle\FeedInterfaces\RelationLinkInterface;
+use Benkle\FeedParser\RelationLink;
 use Benkle\FeedParser\Traits\WithDescriptionTrait;
 use Benkle\FeedParser\Traits\WithEnclosuresTrait;
 use Benkle\FeedParser\Traits\WithLastModifiedTrait;
+use Benkle\FeedParser\Traits\WithMappedLinkTrait;
 use Benkle\FeedParser\Traits\WithPublicIdTrait;
 use Benkle\FeedParser\Traits\WithRelationsTrait;
 use Benkle\FeedParser\Traits\WithTitleTrait;
@@ -34,7 +37,9 @@ use Benkle\FeedParser\Traits\WithTitleTrait;
  */
 class FeedItem implements ItemInterface, \JsonSerializable
 {
-    use WithPublicIdTrait, WithLastModifiedTrait, WithDescriptionTrait, WithTitleTrait, WithRelationsTrait, WithEnclosuresTrait;
+    use WithPublicIdTrait, WithLastModifiedTrait, WithDescriptionTrait,
+        WithTitleTrait, WithRelationsTrait, WithEnclosuresTrait,
+        WithMappedLinkTrait;
 
     /**
      * Specify data which should be serialized to JSON
@@ -55,40 +60,4 @@ class FeedItem implements ItemInterface, \JsonSerializable
             'enclosures'   => $this->getEnclosures(),
         ];
     }
-
-    /**
-     * Get the (canonical) link.
-     * @return string
-     */
-    public function getLink()
-    {
-        return $this->getRelationSilently('alternate');
-    }
-
-    /**
-     * Set the (canonical) link.
-     * @param string $link
-     * @return $this
-     */
-    public function setLink($link)
-    {
-        return $this->setRelation('alternate', $link);
-    }
-
-    /**
-     * Get a relation link, failing silently.
-     * @codeCoverageIgnore
-     * @param string $rel
-     * @return string
-     */
-    private function getRelationSilently($rel)
-    {
-        $result = '';
-        try {
-            $result = $this->getRelation($rel);
-        } catch (\Exception $e) {
-        }
-        return $result;
-    }
-
 }

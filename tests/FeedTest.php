@@ -20,6 +20,7 @@ namespace Benkle\FeedParser;
 
 use Benkle\FeedInterfaces\FeedInterface;
 use Benkle\FeedInterfaces\ItemInterface;
+use Benkle\FeedInterfaces\RelationLinkInterface;
 
 class FeedTest extends \PHPUnit_Framework_TestCase
 {
@@ -104,7 +105,11 @@ class FeedTest extends \PHPUnit_Framework_TestCase
         $publicId = uniqid();
         $url = uniqid();
         $feedItem = $this->createMock(ItemInterface::class);
-        $relation = uniqid();
+        $relation = $this->createMock(RelationLinkInterface::class);
+        $relation
+            ->expects($this->atLeastOnce())
+            ->method('getRelationType')
+            ->willReturn('test');
 
         $feed->setTitle($title);
         $feed->setDescription($description);
@@ -113,7 +118,7 @@ class FeedTest extends \PHPUnit_Framework_TestCase
         $feed->setPublicId($publicId);
         $feed->setUrl($url);
         $feed->addItem($feedItem);
-        $feed->setRelation('test', $relation);
+        $feed->setRelation($relation);
 
         $protoJson = $feed->jsonSerialize();
 
@@ -150,26 +155,44 @@ class FeedTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEmpty($feed->getRelations());
 
-        $feed->setRelation('test', 'test');
+        $relation1 = $this->createMock(RelationLinkInterface::class);
+        $relation1
+            ->expects($this->atLeastOnce())
+            ->method('getRelationType')
+            ->willReturn('test');
+
+        $relation2 = $this->createMock(RelationLinkInterface::class);
+        $relation2
+            ->expects($this->atLeastOnce())
+            ->method('getRelationType')
+            ->willReturn('test');
+
+        $relation3 = $this->createMock(RelationLinkInterface::class);
+        $relation3
+            ->expects($this->atLeastOnce())
+            ->method('getRelationType')
+            ->willReturn('test2');
+
+        $feed->setRelation($relation1);
         $this->assertNotEmpty($feed->getRelations());
         $this->assertCount(1, $feed->getRelations());
         $this->assertArrayHasKey('test', $feed->getRelations());
-        $this->assertEquals(['test' => 'test'], $feed->getRelations());
-        $this->assertEquals('test', $feed->getRelation('test'));
+        $this->assertEquals(['test' => $relation1], $feed->getRelations());
+        $this->assertEquals($relation1, $feed->getRelation('test'));
 
-        $feed->setRelation('test', 'test2');
+        $feed->setRelation($relation2);
         $this->assertNotEmpty($feed->getRelations());
         $this->assertCount(1, $feed->getRelations());
         $this->assertArrayHasKey('test', $feed->getRelations());
-        $this->assertEquals(['test' => 'test2'], $feed->getRelations());
-        $this->assertEquals('test2', $feed->getRelation('test'));
+        $this->assertEquals(['test' => $relation2], $feed->getRelations());
+        $this->assertEquals($relation2, $feed->getRelation('test'));
 
-        $feed->setRelation('test2', 'test3');
+        $feed->setRelation($relation3);
         $this->assertNotEmpty($feed->getRelations());
         $this->assertCount(2, $feed->getRelations());
         $this->assertArrayHasKey('test2', $feed->getRelations());
-        $this->assertEquals(['test' => 'test2', 'test2' => 'test3'], $feed->getRelations());
-        $this->assertEquals('test3', $feed->getRelation('test2'));
+        $this->assertEquals(['test' => $relation2, 'test2' => $relation3], $feed->getRelations());
+        $this->assertEquals($relation3, $feed->getRelation('test2'));
     }
 
     /**

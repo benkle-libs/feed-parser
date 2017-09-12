@@ -23,6 +23,7 @@ use Benkle\FeedInterfaces\ChannelInterface;
 use Benkle\FeedInterfaces\NodeInterface;
 use Benkle\FeedParser\Interfaces\RuleInterface;
 use Benkle\FeedParser\Parser;
+use Benkle\FeedParser\RelationLink;
 use Benkle\FeedParser\Standards\Atom\Atom10Standard;
 
 /**
@@ -32,6 +33,18 @@ use Benkle\FeedParser\Standards\Atom\Atom10Standard;
  */
 class RelationsLinkRule implements RuleInterface
 {
+    /**
+     * Safely get an attribute value.
+     * @param \DOMNode $node
+     * @param string $attr
+     * @param mixed|null $default
+     * @return null|string
+     */
+    private function getAttr(\DOMNode $node, $attr, $default = null)
+    {
+        $attr = $node->attributes->getNamedItem($attr);
+        return isset($attr) ? $attr->nodeValue : $default;
+    }
 
     /**
      * Check if a dom node can be handled by this rule.
@@ -56,9 +69,17 @@ class RelationsLinkRule implements RuleInterface
      */
     public function handle(Parser $parser, \DOMNode $node, NodeInterface $target)
     {
-        $relation = $node->attributes->getNamedItem('rel')->nodeValue;
-        $link = $node->attributes->getNamedItem('href')->nodeValue;
+        $rel = $this->getAttr($node, 'rel');
+        $link = $this->getAttr($node, 'href');
+        $title = $this->getAttr($node, 'title');
+        $mime = $this->getAttr($node, 'type');
+        $relation = new RelationLink();
+        $relation
+            ->setTitle($title)
+            ->setMimeType($mime)
+            ->setRelationType($rel)
+            ->setUrl($link);
         /** @var ChannelInterface $target */
-        $target->setRelation($relation, $link);
+        $target->setRelation($relation);
     }
 }
